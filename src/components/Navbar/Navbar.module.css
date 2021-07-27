@@ -2,15 +2,20 @@
 	grid-area: n;
 	width: 250px;
 	border-radius: 10px;
-	background-color: #2F323A;
+	background: linear-gradient(180deg, #5476FA 0%, #C700FF 100%);
 	padding: 20px;
+}
+
+.item {
 }
 
 .item a {
 	font-family: "Roboto", Helvetica, sans-serif;
+	display: block;
 	width: 100%;
 	line-height: 60px;
 	color: #fff;
+	opacity: 0.6;
 	text-decoration: none;
 	padding-left: 40px;
 	box-sizing: border-box;
@@ -19,7 +24,10 @@
 
 
 .item a.activeLink {
-	color: rgb(123, 255, 0);
+	color: #FFFFFF;
+	opacity: 0.9;
+	
+
 }
 .buttonNav {
 	transition: 0.5s;
