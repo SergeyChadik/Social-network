@@ -45,19 +45,15 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
 	return {
-		sendMessage: () => {
-			store.dispatch(sendMessageCreator());
-		},
-		updateNewMessageBody: (body) => {
-			store.dispatch(updateNewMessageBodyCreator(body));
+		sendMessage: (newMessageBody) => {
+			dispatch(sendMessageCreator(newMessageBody));
 		}
+
 	}
 }
 
 
-
-
 export default compose(
-	connect(mapStateToProps, mapDispatchToProps),
-	withAuthRedirect
+	connect(mapStateToProps, mapDispatchToProps)
+	//withAuthRedirect
 )(Dialogs);
