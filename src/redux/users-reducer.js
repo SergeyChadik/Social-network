@@ -72,15 +72,16 @@ export const unfollowSucces = (userId) => ({ type: UNFOLLOW, userId})
 
 export const setUsers = (users) => ({ type: SET_USERS, users})
 export const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage })
-export const  setTotalUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, count: totalUsersCount })
+export const setTotalUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, count: totalUsersCount })
 export const setIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching })
 export const toggleFollowingProgress = (isFetching, userId) => ({type: TOGGLE_IS_PROGRESS, isFetching, userId})
 
-export const getUsers = (currentPage, pageSize) => {
+export const requestUsers = (page, pageSize) => {
 	return (dispatch) => {
 		dispatch(setIsFetching(true));
+		dispatch(setCurrentPage(page));
 
-		usersAPI.getUsers(currentPage, pageSize).then(data => {
+		usersAPI.getUsers(page, pageSize).then(data => {
 			dispatch(setIsFetching(false));
 			dispatch(setUsers(data.items));
 			dispatch(setTotalUsersCount(data.totalCount));
