@@ -7,10 +7,6 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-//addPost('SLS');
-
-
-
 
 
 export let rerenderEntireTree = (state) => {

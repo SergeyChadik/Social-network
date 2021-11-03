@@ -2,23 +2,21 @@ import React from 'react';
 import classes from "./ProfileInfo.module.css"
 import Preloader from "../Common/Preloader/Preloader";
 import ProfileStatus from '../Profile/ProfileStatus'
+import ProfileStatusWithHooks from "../Profile/ProfileStatusWithHooks";
 
 
-const ProfileInfo = (props) => {
-	if (!props.profile) {
+const ProfileInfo = ({profile, status,updateStatus}) => {
+	if (!profile) {
 		return <Preloader />
 	}
 	return (
 		<div>
-			{/*<div>*/}
-			{/*	<img src='https://img2.fedpress.ru/thumbs/605x362/2019/06/1831/c308ad95b9582618dd723a7bd082fe64.jpg' />*/}
-			{/*</div>*/}
+
 			<div className={classes.discriptionBlock}>
-				<img src={props.profile.photos.large}/>
+				<img src={profile.photos.large}/>
+				<ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
 
-				<ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
-
-				<h3>{props.profile.fullName}</h3>
+				<h3>{profile.fullName}</h3>
 			</div>
 		</div>
 	);
