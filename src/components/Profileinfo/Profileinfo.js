@@ -5,7 +5,7 @@ import ProfileStatus from '../Profile/ProfileStatus'
 import ProfileStatusWithHooks from "../Profile/ProfileStatusWithHooks";
 
 
-const ProfileInfo = ({profile, status,updateStatus}) => {
+const Profileinfo = ({profile, status,updateStatus}) => {
 	if (!profile) {
 		return <Preloader />
 	}
@@ -23,4 +23,4 @@ const ProfileInfo = ({profile, status,updateStatus}) => {
 }
 
 
-export default ProfileInfo;
+export default Profileinfo;
