@@ -3,20 +3,24 @@ import './App.css';
 import HeaderContainer from './components/Header/HeaderContainer'
 import Navbar from './components/Navbar/Navbar';
 import News from './components/News/News';
-import {BrowserRouter, Route, withRouter} from 'react-router-dom';
+import {BrowserRouter, HashRouter, Route, withRouter} from 'react-router-dom';
 import Music from './components/Music/Music';
 import Setting from './components/Settings/Setting';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
+//import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from "./components/Users/UsersContainer";
-import ProfileContainer from "./components/Profile/ProfileContainer";
+//import ProfileContainer from "./components/Profile/ProfileContainer";
 import Login from "./components/Login/Login";
 import {connect, Provider} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/app-Reducer";
 import Preloader from "./components/Common/Preloader/Preloader";
 import store from "./redux/redux-store";
+import {withSuspence} from "./hoc/withSuspence";
 
 
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'))
+
+const ProfileContainer = React.lazy(() => import( "./components/Profile/ProfileContainer"));
 
 
 class App extends Component {
@@ -41,10 +45,10 @@ class App extends Component {
 					<Route path='/Setting' component={Setting} /> */}
 
 					<Route path='/dialogs'
-						   render={() => <DialogsContainer />} />
+						   render={withSuspence(DialogsContainer)} />
 
 					<Route path='/Profile/:userId?'
-						   render={() => <ProfileContainer />} />
+						   render={withSuspence(ProfileContainer)} />
 
 					<Route path='/users'
 						   render={() => <UsersContainer />} />
@@ -77,11 +81,11 @@ let AppContainer = compose(
 	connect(mapStateToProps, {initializeApp})) (App);
 
 const  SamuraiJSApp = (props) => {
-	return <BrowserRouter>
+	return <HashRouter>
 		<Provider store={store}>
 			<AppContainer />
 		</Provider>
-	</BrowserRouter>
+	</HashRouter>
 }
 
 export default SamuraiJSApp;
