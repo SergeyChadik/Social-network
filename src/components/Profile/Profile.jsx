@@ -4,6 +4,7 @@ import MyPostsContainer from '../MyPosts/MyPostsContainer';
 import Post from '../MyPosts/Post/Post';
 import Profileinfo from '../Profileinfo/Profileinfo';
 import classes from "./Profile.module.css"
+import {saveProfile} from "../../redux/profile-reducer";
 
 
 const Profile = (props) => {
@@ -13,6 +14,7 @@ const Profile = (props) => {
 						 isOwner={props.isOwner}
 						 profile={props.profile}
 						 status={props.status}
+						 saveProfile={props.saveProfile}
 						 updateStatus={props.updateStatus}/>
 			<MyPostsContainer/>
 		</div>
